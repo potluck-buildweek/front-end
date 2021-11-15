@@ -8,7 +8,7 @@
 import React, {useState} from 'react';
 
 const userType = {
-    //assumingw e will do user type validation thru this with a key of 'type' and vals of 'guest' or 'organizer'
+    //assuming we will do user type validation thru this with a key of 'type' and vals of 'guest' or 'organizer'
     organizer: 1,
     guest: 0 //NOT ints-- these are boolean values that represent our user type.
 }
@@ -20,8 +20,8 @@ const dateTime={ //form
     time: ''
 }
 
-const items={ //form
-    requested: []
+const requestedItems={ //form
+    requested: [] //array because it will be easier to do checking (below mention) with an array... maybe ;-)
 }
 
 //reminder to add functionality that will check if an item has already been requested!
@@ -37,11 +37,19 @@ const inviteData = { //called so to differentiate between this data and the func
 //LOGIC aka 'FUNCTION' SECTIONR
 
 const OrganizerForm = (props)=>{
-//set the user into state, first.
+//as always, DATA SECTIONR
 
 const [user,setUser] = useState(userType); //this may need to be changed to an array if my logic is not completely faulty...
 
+const [dt,setDt] = useState(dateTime); //"dt" ie datetime
 
+const [items,setItems] = useState(requestedItems);
+
+const [guests,setGuests] = useState(guestlist);
+
+const [invite,setInvite] = useState(inviteData);
+
+    //RETURN AKA 'RENDER' SECTIONR
     return(
         <div className='organizer-form'>
 
