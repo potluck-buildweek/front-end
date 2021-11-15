@@ -26,12 +26,14 @@ const requestedItems={ //form
 
 //reminder to add functionality that will check if an item has already been requested!
 
-const guestlist={ //'guestlist' will be a list grepped from inviteData below;; this will be the guests who have rspv'd (needful validity from rsvp() function)
+const guestlist={ //'guestlist' will be a list grepped from inviteData below;; this will be the guests who have rspv'd (needful validity from rsvp() function) this will be the list of inviteData.email ? name : no invite for you
     guests: []
 }
 
-const inviteData = { //called so to differentiate between this data and the function handling inviting()
-    invited: []
+const inviteData = { //called so to differentiate between this data and the function handling inviting(). THIS is the data that our form will be initialized with!
+    invitedEmail: '',
+    invitedName: '',
+    invitedMessage: '' 
 }
 
 //LOGIC aka 'FUNCTION' SECTIONR
