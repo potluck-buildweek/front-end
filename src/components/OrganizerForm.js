@@ -53,10 +53,23 @@ const [invite,setInvite] = useState(inviteData);
 
 const {formValues,update,submit} = props;
 
+//datetime, guestlist, itemslist can all use same functionality as they are just plain text inputs.
+
+//LOGIC sectionr
+
+    const update=(event)=>{
+        event.preventDefault();
+        //do the filling of form!
+    }
+
+    const submit=(event)=>{
+        //do submission of form, returning a record of the thing itself
+    }
+
     //RETURN AKA 'RENDER' SECTIONR
     return(
         <div className='organizer-form'>
-
+            {/*NEEDFUL: date/time text input, items, guestlist, 'invite' form*/}
         </div>
     )
 }
