@@ -30,7 +30,7 @@ const guestlist={ //'guestlist' will be a list grepped from inviteData below;; t
     guests: []
 }
 
-const inviteData = { //called so to differentiate between this data and the function handling inviting(). THIS is the data that our form will be initialized with!
+const inviteData = { //called so to differentiate between this data and the function handling inviting(). THIS is the data that our form will be initialized with! what else to do..
     invitedEmail: '',
     invitedName: '',
     invitedMessage: '' 
@@ -50,6 +50,8 @@ const [items,setItems] = useState(requestedItems);
 const [guests,setGuests] = useState(guestlist);
 
 const [invite,setInvite] = useState(inviteData);
+
+const {formValues,update,submit} = props;
 
     //RETURN AKA 'RENDER' SECTIONR
     return(
