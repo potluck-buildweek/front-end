@@ -7,7 +7,7 @@ const axiosWithAuth = ()=> {
         headers: {
             authorization: token
         },
-        baseURL: 'http://localhost:5000/api' //waiting for backend to put path
+        baseURL: 'http://localhost:5000/api/auth' //waiting for backend to put path
     });
 }
 
