@@ -6,8 +6,7 @@ import * as yup from 'yup';
 
 const yupForm = yup.object().shape({
     items: yup.string(),
-    yes: yup.boolean(),
-    no: yup.boolean()
+    rsvp: yup.boolean(),
 })
 
 const defaultVal = {
@@ -17,14 +16,15 @@ const defaultVal = {
    
 }
 
-function guestForm() {
+function GuestForm(props) {
+    const { submit } = props;
     const [isValid, setIsValid] = useState(true);
 
     const [form, setForm] = useState(defaultVal);
 
     const [errorState, setError] = useState({
-        bringing: "",
-        confirm: "",
+        items: "",
+        rsvp: "",
         
     })
 
@@ -61,7 +61,13 @@ function guestForm() {
         let value = e.target.type === "checkbox" ? e.target.checked : e.target.value
         setForm({ ...form, [e.target.name]: value });
     };
-
+    const formSubmit=()=>{
+        return null;
+    }
+    const onSubmit = evt=>{
+        evt.preventDefault();
+        submit();
+    }
 
     return (
         <div>
@@ -72,17 +78,19 @@ function guestForm() {
                 <p>
                     <input
                         id="rsvp"
-                        type="checkbox"
-                        checked={form.yes}
+                        type="radio"
                         onChange={inputChange}
-                        name="yes"
+                        name="rsvp"
+                        value="yes"
+                        checked={form.true}
                     />yes
                     <input
                         id="rsvp"
-                        type="checkbox"
-                        checked={form.no}
+                        type="radio"
                         onChange={inputChange}
-                        name="no"
+                        name="rsvp"
+                        value="no"
+                        checked={form.false}
                     />no
                 
 
@@ -98,7 +106,7 @@ function guestForm() {
                         <option value="Potatoes">Potatoes</option>
                     </select>
                 </p>
-
+                <button onClick={onSubmit}>submit</button>
             </form>
         </div>
     );
@@ -107,4 +115,4 @@ function guestForm() {
 }
 
 
-export default guestForm;
+export default GuestForm;

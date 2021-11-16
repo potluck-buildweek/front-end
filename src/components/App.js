@@ -3,11 +3,11 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './PrivateRoute';
 
-import Login from './components/Login';
-import Logout from './components/Logout';
-
+import Login from './Login';
+import Logout from './Logout';
+import GuestForm from './GuestForm'
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -15,27 +15,24 @@ function App() {
   const role = localStorage.getItem('role');
   const username = localStorage.getItem('username');
 
+  const submit=()=>{
+    //wip
+  }
+
   return (
     <Router>
+    
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
+          <nav>
+            <Link to="/login">Already signed in? Login!</Link>
+
             <Link to="/logout">Logout</Link>
-          </li>
-          <li>
+
             {(role === 'admin' && isLoggedIn) && <Link to="/logout">Admin</Link> }
-          </li>
-          <li>
-            {isLoggedIn && <div>
-                <Link to="/protected">Protected Page</Link>
-                <p>Welcome to the page: {username}</p>
-              </div>
+            {isLoggedIn &&
+                <Link to="/protected">Home</Link> 
             }
-          </li>
-        </ul>
+          </nav>
         <Switch>
           {/* after login authentication  the user can changed dates and other fields in the organizer*/}
           <PrivateRoute exact path="/protected" component={"Organizer"} />          
@@ -43,10 +40,14 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/" component={Login} />    
         </Switch>
+        {isLoggedIn && <div>
+                <p>Welcome to the page: {username}</p>
+                <GuestForm submit={submit}/>
+              </div>
+            }
       </div>
     </Router>
   );
 }
-
 
 export default App;
