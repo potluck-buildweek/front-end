@@ -1,21 +1,52 @@
 import './App.css';
-import react from 'react'
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
+import PrivateRoute from './components/PrivateRoute';
+
+import Login from './components/Login';
+import Logout from './components/Logout';
+
 
 function App() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const isLoggedIn = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+  const username = localStorage.getItem('username');
+
   return (
-    <div className="App">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to 
-make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
-including versions of Lorem Ipsum.</p>
-    </div>
+    <Router>
+      <div className="App">
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/logout">Logout</Link>
+          </li>
+          <li>
+            {(role === 'admin' && isLoggedIn) && <Link to="/logout">Admin</Link> }
+          </li>
+          <li>
+            {isLoggedIn && <div>
+                <Link to="/protected">Protected Page</Link>
+                <p>Welcome to the page: {username}</p>
+              </div>
+            }
+          </li>
+        </ul>
+        <Switch>
+          {/* after login authentication  the user can changed dates and other fields in the organizer*/}
+          <PrivateRoute exact path="/protected" component={"Organizer"} />          
+          <Route path="/logout" component={Logout} />
+          <Route path="/login" component={Login} />
+          <Route path="/" component={Login} />    
+        </Switch>
+      </div>
+    </Router>
   );
 }
+
 
 export default App;
