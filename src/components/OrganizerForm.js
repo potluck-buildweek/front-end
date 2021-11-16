@@ -15,20 +15,14 @@ const userType = {
 
 //needful:: add datetime, requested items, guestlist, invite users (email? field that will do() sending an invite out)
 
-const dateTime={ //form
+const eventForm={ //form
     date: '',
-    time: ''
-}
-
-const requestedItems={ //form
-    requested: [] //array because it will be easier to do checking (below mention) with an array... maybe ;-)
+    time: '',
+    requestedItems: [],
+    guests: [], //guests comes from confirmed folks
 }
 
 //reminder to add functionality that will check if an item has already been requested!
-
-const guestlist={ //'guestlist' will be a list grepped from inviteData below;; this will be the guests who have rspv'd (needful validity from rsvp() function) this will be the list of inviteData.email ? name : no invite for you
-    guests: []
-}
 
 const inviteData = { //called so to differentiate between this data and the function handling inviting(). THIS is the data that our form will be initialized with! what else to do..
     invitedEmail: '',
@@ -43,11 +37,7 @@ const OrganizerForm = (props)=>{
 
 const [user,setUser] = useState(userType); //this may need to be changed to an array if my logic is not completely faulty...
 
-const [dt,setDt] = useState(dateTime); //"dt" ie datetime
-
-const [items,setItems] = useState(requestedItems);
-
-const [guests,setGuests] = useState(guestlist);
+const [formVals,setFormVals] = useState(eventForm)
 
 const [invite,setInvite] = useState(inviteData);
 
@@ -60,6 +50,9 @@ const {formValues,update,submit} = props;
     const update=(event)=>{
         event.preventDefault();
         //do the filling of form!
+
+        let value = event.target.value;
+        setFormVals({...formVals,[event.target.name]:value})
     }
 
     const submit=(event)=>{
@@ -73,9 +66,9 @@ const {formValues,update,submit} = props;
             <lable>Datetime
                 <input 
                 type='text'
-                name='datetime'
-                value={formValues.datetime}
-                onChange={onChange}
+                name='date'
+                value={formValues.date}
+                onChange={update}
                 />
             </lable>
         </div>
