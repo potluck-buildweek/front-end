@@ -70,6 +70,14 @@ const {formValues,update,submit} = props;
     return(
         <div className='organizer-form'>
             {/*NEEDFUL: date/time text input, items, guestlist, 'invite' form*/}
+            <lable>Datetime
+                <input 
+                type='text'
+                name='datetime'
+                value={formValues.datetime}
+                onChange={onChange}
+                />
+            </lable>
         </div>
     )
 }
