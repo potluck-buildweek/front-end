@@ -46,7 +46,7 @@ const {formValues,inviteValues,update,submit} = props;
 //LOGIC sectionr
 
     const update=(event)=>{
-        event.preventDefault();
+        
         //do the filling of form!
 
         let value = event.target.value;
@@ -54,8 +54,9 @@ const {formValues,inviteValues,update,submit} = props;
     }
 
     const submit=(event)=>{
+        event.preventDefault();
         //do submission of form, returning a record of the thing itself
-       
+       submit();
     }
 
     //RETURN AKA 'RENDER' SECTIONR
