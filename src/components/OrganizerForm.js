@@ -62,8 +62,9 @@ const {formValues,update,submit} = props;
     //RETURN AKA 'RENDER' SECTIONR
     return(
         <div className='organizer-form'>
-            {/*NEEDFUL: date/time text input, items, guestlist, 'invite' form*/}
-            <lable>Datetime
+            {/*NEEDFUL: date/time text input X, items X, guestlist X, 'invite' form*/}
+            <span className='datetime-guestlist'>
+            <lable>Date
                 <input 
                 type='text'
                 name='date'
@@ -71,6 +72,47 @@ const {formValues,update,submit} = props;
                 onChange={update}
                 />
             </lable>
+
+            <lable>Time
+                <input 
+                type='text'
+                name='time'
+                value={formValues.time}
+                onChange={update}
+                />
+            </lable>
+
+            <lable>Items
+                <input 
+                type='text'
+                name='items'
+                value={formValues.requestedItems}
+                onChange={update}
+                />
+            </lable>
+
+            <lable>Guest List
+                <input 
+                type='text'
+                name='guests'
+                value={formValues.guests}
+                onChange={update}
+                />
+            </lable>
+
+            </span>
+
+        <span className='invited-data'>
+            <lable>Email
+                <input 
+                type='email'
+                name='email'
+                value={formValues.invitedEmail}
+                onChange={update}
+                />
+            </lable>
+        </span>
+
         </div>
     )
 }
