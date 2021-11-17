@@ -2,9 +2,7 @@ import './App.css';
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
 import PrivateRoute from './components/PrivateRoute';
-
 import Login from './components/Login';
 import Logout from './components/Logout';
 
@@ -37,7 +35,7 @@ function App() {
           </li>
         </ul>
         <Switch>
-          {/* after login authentication  the user can changed dates and other fields in the organizer*/}
+          {/* after login authentication the user can changed dates and other fields in the organizer*/}
           <PrivateRoute exact path="/protected" component={"Organizer"} />          
           <Route path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
