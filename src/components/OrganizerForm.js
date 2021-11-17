@@ -35,8 +35,6 @@ const inviteData = { //called so to differentiate between this data and the func
 const OrganizerForm = (props)=>{
 //as always, DATA SECTIONR
 
-const [user,setUser] = useState(userType); //this may need to be changed to an array if my logic is not completely faulty...
-
 const [formVals,setFormVals] = useState(eventForm)
 
 const [invite,setInvite] = useState(inviteData);
