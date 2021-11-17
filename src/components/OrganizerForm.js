@@ -41,7 +41,7 @@ const [formVals,setFormVals] = useState(eventForm)
 
 const [invite,setInvite] = useState(inviteData);
 
-const {formValues,update,submit} = props;
+const {formValues,inviteValues,update,submit} = props;
 
 //datetime, guestlist, itemslist can all use same functionality as they are just plain text inputs.
 
@@ -57,6 +57,7 @@ const {formValues,update,submit} = props;
 
     const submit=(event)=>{
         //do submission of form, returning a record of the thing itself
+       
     }
 
     //RETURN AKA 'RENDER' SECTIONR
@@ -107,7 +108,7 @@ const {formValues,update,submit} = props;
                 <input 
                 type='email'
                 name='email'
-                value={formValues.invitedEmail}
+                value={inviteValues.invitedEmail}
                 onChange={update}
                 />
             </lable>
@@ -116,7 +117,7 @@ const {formValues,update,submit} = props;
                 <input 
                 type='text'
                 name='name'
-                value={formValues.invitedName}
+                value={inviteValues.invitedName}
                 onChange={update}
                 />
             </lable>
@@ -125,7 +126,7 @@ const {formValues,update,submit} = props;
                 <input 
                 type='text'
                 name='message'
-                value={formValues.invitedMessage}
+                value={inviteValues.invitedMessage}
                 onChange={update}
                 />
             </lable>
