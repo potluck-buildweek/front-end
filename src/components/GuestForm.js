@@ -74,8 +74,7 @@ function GuestForm(props) {
             <h1>Welcome Guest</h1>
 
             <form onSubmit={formSubmit} id="guest-form">
-                <label htmlFor="rsvp">Will you be joining us?</label>
-                <p>
+                <label htmlFor="rsvp">Will you be joining us?</label><br />
                     <input
                         id="rsvp"
                         type="radio"
@@ -91,12 +90,9 @@ function GuestForm(props) {
                         name="rsvp"
                         value="no"
                         checked={form.false}
-                    />no
-                
-
-                </p>
-                <p><label htmlFor="item-dropdown">What are you bringing? </label>
-                    <select 
+                    />no<br />
+                    <label htmlFor="item-dropdown">What are you bringing? </label>
+                    <br /><select 
                     id="item-dropdown" 
                     name="items" 
                     value={form.items} 
@@ -104,14 +100,11 @@ function GuestForm(props) {
                         <option value="Turkey">Turkey</option>
                         <option value="Ham">Ham</option>
                         <option value="Potatoes">Potatoes</option>
-                    </select>
-                </p>
+                    </select><br />
                 <button onClick={onSubmit}>submit</button>
             </form>
         </div>
     );
-
-
 }
 
 
