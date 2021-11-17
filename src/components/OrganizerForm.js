@@ -62,7 +62,7 @@ const {formValues,inviteValues,update,submit} = props;
 
     //RETURN AKA 'RENDER' SECTIONR
     return(
-        <div className='organizer-form'>
+        <form className='organizer-form' onSubmit={submit}>
             {/*NEEDFUL: date/time text input X, items X, guestlist X, 'invite' form*/}
             <span className='datetime-guestlist'>
             <lable>Date
@@ -133,7 +133,7 @@ const {formValues,inviteValues,update,submit} = props;
 
         </span>
 
-        </div>
+        </form>
     )
 }
 
