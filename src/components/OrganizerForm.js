@@ -111,6 +111,25 @@ const {formValues,update,submit} = props;
                 onChange={update}
                 />
             </lable>
+
+            <lable>Name
+                <input 
+                type='text'
+                name='name'
+                value={formValues.invitedName}
+                onChange={update}
+                />
+            </lable>
+
+            <lable>Enter a MESSAGE!
+                <input 
+                type='text'
+                name='message'
+                value={formValues.invitedMessage}
+                onChange={update}
+                />
+            </lable>
+
         </span>
 
         </div>
