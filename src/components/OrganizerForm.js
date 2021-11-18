@@ -64,71 +64,71 @@ const {formValues,inviteValues,update,submit} = props;
         <form className='organizer-form' onSubmit={submit}>
             {/*NEEDFUL: date/time text input X, items X, guestlist X, 'invite' form*/}
             <span className='datetime-guestlist'>
-            <lable>Date
+            <label>Date
                 <input 
                 type='text'
                 name='date'
                 value={formValues.date}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
-            <lable>Time
+            <label>Time
                 <input 
                 type='text'
                 name='time'
                 value={formValues.time}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
-            <lable>Items
+            <label>Items
                 <input 
                 type='text'
                 name='items'
                 value={formValues.requestedItems}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
-            <lable>Guest List
+            <label>Guest List
                 <input 
                 type='text'
                 name='guests'
                 value={formValues.guests}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
             </span>
 
         <span className='invited-data'>
-            <lable>Email
+            <label>Email
                 <input 
                 type='email'
                 name='email'
                 value={inviteValues.invitedEmail}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
-            <lable>Name
+            <label>Name
                 <input 
                 type='text'
                 name='name'
                 value={inviteValues.invitedName}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
-            <lable>Enter a MESSAGE!
+            <label>Enter a MESSAGE!
                 <input 
                 type='text'
                 name='message'
                 value={inviteValues.invitedMessage}
                 onChange={update}
                 />
-            </lable>
+            </label>
 
         </span>
 
