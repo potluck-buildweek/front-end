@@ -1,11 +1,20 @@
 import './App.css';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+
 import PrivateRoute from './components/PrivateRoute';
 import Login from './components/Login';
 import Logout from './components/Logout';
 
+import axios from 'axios';
+
+
+
+const initialFormValues = {
+  users: '',
+  events: [],
+}
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -13,38 +22,53 @@ function App() {
   const role = localStorage.getItem('role');
   const username = localStorage.getItem('username');
 
+  axios.get('login').then().catch(); //for the backend, passthru to guest and organizer
+
+  const submit=()=>{
+    //wip
+  }
+
   return (
     <Router>
+
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
+          <nav>
+            <Link to="/login">Already signed in? Login!</Link>
+
             <Link to="/logout">Logout</Link>
-          </li>
-          <li>
-            {(role === 'admin' && isLoggedIn) && <Link to="/logout">Admin</Link> }
-          </li>
-          <li>
-            {isLoggedIn && <div>
-                <Link to="/protected">Protected Page</Link>
-                <p>Welcome to the page: {username}</p>
-              </div>
+
+            {(role === 'user' && isLoggedIn) && <Link to="/logout">'user'</Link> }
+            {isLoggedIn &&
+                <Link to="/protected">Home</Link> 
             }
-          </li>
-        </ul>
+          </nav>
         <Switch>
-          {/* after login authentication the user can changed dates and other fields in the organizer*/}
-          <PrivateRoute exact path="/protected" component={"Organizer"} />          
-          <Route path="/logout" component={Logout} />
-          <Route path="/login" component={Login} />
-          <Route path="/" component={Login} />    
+          {/* after login authentication  the user can changed dates and other fields in the organizer*/}
+          <PrivateRoute exact path="/protected" component={"OrganizerForm"} />
+          {!isLoggedIn && <div className='login'><img src='https://media.istockphoto.com/photos/reality-check-ahead-picture-id689438716' />
+            <Route path="/logout" component={Logout} />
+            <Route path="/login" component={Login} />
+            <Route path="/" component={Home} />
+          </div>}
+
         </Switch>
+        {isLoggedIn && <div>
+                <h2>Welcome to the page: {username}</h2>
+              </div>
+          }
+          <div className='wrapper'>
+        {isLoggedIn && <div className='card'>
+                <GuestForm submit={submit}/>
+              </div>
+          }
+        {isLoggedIn && <div className='card'>
+                <GuestForm submit={submit}/>
+              </div>
+          }
+          </div>
       </div>
     </Router>
   );
 }
-
 
 export default App;

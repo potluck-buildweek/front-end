@@ -6,8 +6,9 @@ const axiosWithAuth = ()=> {
     return axios.create({
         headers: {
             authorization: token
-        },
-        baseURL: 'api/auth' //waiting for backend to put path
+        }
+        baseURL: '/api/auth' //waiting for backend to put path
+
     });
 }
 
