@@ -38,7 +38,9 @@ handleChange = e => {
 
   render() {
     return (
+      <div className='login'>
         <form onSubmit={this.login}>
+        <img src='https://media.istockphoto.com/photos/reality-check-ahead-picture-id689438716' alt='reality check ahead'/>
           <input
             type="text"
             name="username"
@@ -53,6 +55,7 @@ handleChange = e => {
           />
           <button>Log in</button>
         </form>
+      </div>
     );
   }
 }

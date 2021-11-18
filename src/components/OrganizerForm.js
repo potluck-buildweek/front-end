@@ -20,6 +20,9 @@ const eventForm={ //form
     time: '',
     requestedItems: [],
     guests: [], //guests comes from confirmed folks
+    invitedEmail: '',
+    invitedName: '',
+    invitedMessage: '' 
 }
 
 //reminder to add functionality that will check if an item has already been requested!
@@ -35,80 +38,94 @@ const inviteData = { //called so to differentiate between this data and the func
 const OrganizerForm = (props)=>{
 //as always, DATA SECTIONR
 
-const [formVals,setFormVals] = useState(eventForm)
+const [formValues, setFormValues] = useState(eventForm)
 
-const [invite,setInvite] = useState(inviteData);
+const [invite, setInvite] = useState(inviteData);
 
-const {formValues,inviteValues,update,submit} = props;
+  const submit=()=>{
+    //wip
+    console.log('hiiiiii')
+  }
 
 //datetime, guestlist, itemslist can all use same functionality as they are just plain text inputs.
 
 //LOGIC sectionr
 
-    const update=(event)=>{
+    const onChange=(event)=>{
         
         //do the filling of form!
 
         let value = event.target.value;
-        setFormVals({...formVals,[event.target.name]:value})
+        setFormValues({ ...formValues, [event.target.name]:value})
+    }
+        const onChange2=(event)=>{
+        
+        //do the filling of form!
+
+        let value = event.target.value;
+        setInvite({ ...invite, [event.target.name]:value})
     }
 
-    const submit=(event)=>{
+    const submitEvent=(event)=>{
         event.preventDefault();
         //do submission of form, returning a record of the thing itself
-       submit();
+        submit();
+    }
+        const submitInvite=(event)=>{
+        event.preventDefault();
+        //do submission of form, returning a record of the thing itself
+        submit();
     }
 
     //RETURN AKA 'RENDER' SECTIONR
     return(
-        <form className='organizer-form' onSubmit={submit}>
+        <div className='organizer-form'>
             {/*NEEDFUL: date/time text input X, items X, guestlist X, 'invite' form*/}
-            <span className='datetime-guestlist'>
+            <form className='datetime-guestlist' onSubmit={submitEvent}>
             <label>Date
                 <input 
-                type='text'
+                type='date'
                 name='date'
                 value={formValues.date}
-                onChange={update}
+                onChange={onChange}
                 />
             </label>
 
             <label>Time
                 <input 
-                type='text'
+                type='time'
                 name='time'
                 value={formValues.time}
-                onChange={update}
+                onChange={onChange}
                 />
             </label>
 
             <label>Items
-                <input 
+                <textarea 
                 type='text'
                 name='items'
-                value={formValues.requestedItems}
-                onChange={update}
+                value={formValues.items}
+                onChange={onChange}
                 />
             </label>
 
             <label>Guest List
-                <input 
+                <textarea 
                 type='text'
                 name='guests'
                 value={formValues.guests}
-                onChange={update}
+                onChange={onChange}
                 />
             </label>
-
-            </span>
-
-        <span className='invited-data'>
+            <button> submit </button>
+        </form>
+        <form className='invited-data' onSubmit={submitInvite}>
             <label>Email
                 <input 
                 type='email'
                 name='email'
-                value={inviteValues.invitedEmail}
-                onChange={update}
+                value={invite.invitedEmail}
+                onChange={onChange2}
                 />
             </label>
 
@@ -116,8 +133,8 @@ const {formValues,inviteValues,update,submit} = props;
                 <input 
                 type='text'
                 name='name'
-                value={inviteValues.invitedName}
-                onChange={update}
+                value={invite.invitedName}
+                onChange={onChange2}
                 />
             </label>
 
@@ -125,14 +142,14 @@ const {formValues,inviteValues,update,submit} = props;
                 <input 
                 type='text'
                 name='message'
-                value={inviteValues.invitedMessage}
-                onChange={update}
+                value={invite.invitedMessage}
+                onChange={onChange2}
                 />
             </label>
-
-        </span>
-
+        <button> submit </button>
         </form>
+
+        </div>
     )
 }
 
