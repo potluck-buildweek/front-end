@@ -99,15 +99,13 @@ nav a:hover{
 	display: flex;
 	justify-content: center;
 	flex-flow: column wrap;
-	margin: 3% 40%;
+	margin: 3% 30%;
 	padding: 1% 0 1% 0;
 	border: 2px solid black;
 }
 .login img{
-
 	width: 100%;
 	padding-bottom: 6%;
-
 }
 .wrapper{
 	display:flex;
@@ -123,6 +121,44 @@ nav a:hover{
 }
 .card p{
 	margin:2%;
+}
+.organizer-form{
+	display: flex;
+}
+.datetime-guestlist{
+	display:flex;
+	flex-flow: column wrap;
+	margin: 5%;
+	justify-content: center;
+}
+.invited-data{
+	display:flex;
+	flex-flow: column wrap;
+	margin:10%;
+	justify-content: center;
+}
+.datetime-guestlist label{
+	margin: 5% 0;
+}
+.invited-data label{
+	margin:5% 0;
+}
+button{
+	width: 55px;
+}
+#guest-form h1{
+	margin:5%;
+}
+#guest-form input{
+	margin:5%;
+}
+#guest-form select{
+	margin:5%;
+}
+@media (max-width: 1200px) {
+	.login{
+		margin: 3% 15%;
+	}
 }
 
 @media (max-width: 800px) {
