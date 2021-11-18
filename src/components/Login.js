@@ -20,9 +20,12 @@ handleChange = e => {
 
   login = e => {
     e.preventDefault();
-    //1. axios call http://localhost:5000/api/login pass in username and password through the body
+    //1. axios call http://api/login pass in username and password through the body
+
+
 
     axios.post('api/auth/login', this.state.credentials)
+
       .then(resp=> {
         //2. if the call is successful: save token in localStorage
         localStorage.setItem('token', resp.data.token);
