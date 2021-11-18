@@ -45,11 +45,11 @@ function App() {
               </div>
           }
           <div className='wrapper'>
-        {true && <div className='card'>
+        {isLoggedIn && <div className='card'>
                 <OrganizerForm />
               </div>
           }
-        {true && <div className='card'>
+        {isLoggedIn && <div className='card'>
                 <GuestForm />
               </div>
           }
