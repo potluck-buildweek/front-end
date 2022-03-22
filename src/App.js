@@ -34,12 +34,16 @@ function App() {
             }
           </nav>
           <Switch>
+            
             {/* after login authentication  the user can changed dates and other fields in the organizer*/}
+  
             <PrivateRoute exact path="/protected" component={"OrganizerForm"} />
             <Route path="/logout" component={Logout} />
             <Route path="/login" component={Login} />
-            <Route path="/" component={Home} />
+            <Route exact path="/" component={Home} />
+              
           </Switch>
+  
         {isLoggedIn && <div>
                 <h2>Welcome to the Potluck Planner: {username}</h2>
               </div>
