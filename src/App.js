@@ -13,7 +13,7 @@ import OrganizerForm from './components/OrganizerForm';
 import Home from './components/Home';
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const isLoggedIn = localStorage.getItem('token');
   const role = localStorage.getItem('role');
   const username = localStorage.getItem('username');
